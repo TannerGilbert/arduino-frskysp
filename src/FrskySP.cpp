@@ -133,6 +133,20 @@ FrskySP::FrskySP (int pin) {
 }
 
 /**
+ * Open a SoftwareSerial connection
+ * \param rxPin the pin on which to receive serial data
+ * \param txPin the pin on which to transmit serial data
+ * \brief Class constructor
+ * \todo allow the use [AltSoftSerial] (http://www.pjrc.com/teensy/td_libs_AltSoftSerial.html) instead - much faster
+ *   than SerialSoftware, and no conflict with [PinChangeInt] (https://code.google.com/p/arduino-pinchangeint/) - see
+ *  [bugs] (https://code.google.com/p/arduino-pinchangeint/wiki/Bugs).
+ */
+FrskySP::FrskySP (int rxPin, int txPin) {
+    this->mySerial = new SoftwareSerial (rxPin, txPin, true);
+    this->mySerial->begin (57600);
+}
+
+/**
  * Check if a byte is available on Smart Port
  * 
  * \brief SoftwareSerial.available() passthrough

@@ -388,6 +388,7 @@ class FrskySP {
     public:
         // methods
         FrskySP (int pin);
+        FrskySP (int rxPin, int txPin);
         int      available ();
         uint8_t  CRC (uint8_t *packet);
         bool     CRCcheck (uint8_t *packet);
